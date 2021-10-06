@@ -6,6 +6,7 @@ import Chapters from "./Components/Chapters";
 import EChapters from "./Components/EChapters";
 import Nazirath from "./Components/Nazirath";
 import English from "./Components/English";
+import Tasbih from "./Components/Tasbih";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -15,7 +16,6 @@ function App() {
     <>
       <Router>
         <Navbar/>
-        {/* <MiniNav /> */}
         <Switch>
           <Route exact path="/">
             <Home />
@@ -34,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/echapters/:id2">
             <English />
+          </Route>
+          <Route exact path="/tasbih">
+            <Tasbih />
           </Route>
         </Switch>
       </Router>

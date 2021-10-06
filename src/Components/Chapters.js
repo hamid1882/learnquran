@@ -2,13 +2,15 @@ import useRemoteChapters from "./useRemoteChapters";
 import { Link } from "react-router-dom";
 import useDisplayModes from "./useDisplayModes";
 import { useState } from "react";
+import LoadingBar from 'react-top-loading-bar';
+import '../App.css'
 
 const Chapters = () => {
-  const [loading, data, MiniNav] = useRemoteChapters(
+  const [loading, data, MiniNav, progress, setProgress, handleLoad] = useRemoteChapters(
     "https://api.quran.com/api/v4/chapters?language=en",
     (data) => data.chapters
   );
-  const [design, handleClick, btnText] = useDisplayModes();
+  const [design, handleClick, btnText ] = useDisplayModes();
   const [search, setSearch] = useState("");
 
   const handleChange = (e) => {
@@ -18,6 +20,12 @@ const Chapters = () => {
 
   return (
     <>
+      <LoadingBar
+        color='#f11946'
+        height={3}
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
       <MiniNav nightMode={design} click={handleClick} text={btnText} />
       <div style={design} className="d-flex justify-content-center">
         <form style={design} className="d-flex w-50 p-2 my-2">
@@ -42,12 +50,14 @@ const Chapters = () => {
             }
             if (val.name_simple.toLowerCase().includes(search.toLowerCase())) {
               return val;
+            } else {
+              return null;
             }
           })
           .map((item) => {
             return (
               <div
-                className="col col-md-4 col-lg-3 border border-success rounded text-center my-3 "
+                className="hoverDiv col col-md-4 col-lg-3 border border-success rounded text-center my-3 "
                 style={{ cursor: "pointer" }}
               >
                 <Link
@@ -55,6 +65,7 @@ const Chapters = () => {
                   style={design}
                   className="d-flex p-2 rounded justify-content-evenly align-items-center"
                   key={item.id}
+                  onClick={handleLoad}
                 >
                   <div className="bg-secondary bg-opacity-50 p-2 rounded-circle">
                     {item.id < 10 ? "0" + item.id : item.id}

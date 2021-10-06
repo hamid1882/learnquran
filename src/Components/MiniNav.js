@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import '../App.css'
 
 const MiniNav = (props) => {
   return (
     <ul style={props.nightMode} className="nav sticky-top bg-opacity-50 align-items-center justify-content-between">
-      <li className="nav-item">
+      <li className="hoverNavItems nav-item">
         <Link
           style={props.nightMode}
           className="nav-link active"
@@ -14,7 +15,7 @@ const MiniNav = (props) => {
           Home
         </Link>
       </li>
-      <li className="nav-item">
+      <li className="hoverNavItems nav-item">
         <Link
           style={props.nightMode}
           className="nav-link"
@@ -23,7 +24,7 @@ const MiniNav = (props) => {
           Chapters
         </Link>
       </li>
-      <li className="nav-item">
+      <li className="hoverNavItems nav-item">
         <Link
           style={props.nightMode}
           className="nav-link"
@@ -40,7 +41,7 @@ const MiniNav = (props) => {
           id="flexSwitchCheckDefault"
           onClick={props.click}
         />
-        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+        <label className="hoverNavItems form-check-label" htmlFor="flexSwitchCheckDefault">
           {props.text}
         </label>
       </div>

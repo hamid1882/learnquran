@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import '../App.js'
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light pb-0" >
-      <div className="container-fluid">
+    <nav className="navbarBg navbar navbar-expand-lg navbar-light bg-light pb-0" >
+      <div className="container">
         <Link className="navbar-brand d-flex align-items-center gap-3 px-4" to="/">
           <img className="w-25 h-25" src="http://pngimg.com/uploads/quran/quran_PNG39.png" alt="logo" />
           <h2>Learn - Quran</h2>
@@ -20,7 +21,7 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse px-2 mx-2" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">
