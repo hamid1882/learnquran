@@ -10,16 +10,18 @@ import English from "./Components/English";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbar/>
+        {/* <MiniNav /> */}
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/about">
-            <About />
+            <About/>
           </Route>
           <Route exact path="/chapters">
             <Chapters />

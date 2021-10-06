@@ -1,10 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useDisplayModes from './useDisplayModes';
+
+import MiniNav from './MiniNav';
 
 const Home = () => {
+
+  const [design, handleClick, btnText] = useDisplayModes();
+
+
   return (
-    <div className="container">
-      <div className="text-center px-5 my-5 sm-w-50 sm-h-50">
+    <>
+    <div className="container-fluid" style={design}>
+    <MiniNav nightMode={design} click={handleClick} text={btnText}/>
+      <div className="text-center px-5 mb-5 sm-w-50 sm-h-50">
         <img src="https://cdn.qurancdn.com/assets/quran-logo-f5d0f128f5aa2a1949a3157d96bbd04a184e4a4ee0e05d464a3f2ae8d0bdcbdf.png" alt="Quran-Caligraphy" />
       </div>
       <h1 className="fs-1 text-center">Read Quran</h1>
@@ -31,6 +40,7 @@ const Home = () => {
         </Link>
       </div>
     </div>
+    </>
   );
 };
 

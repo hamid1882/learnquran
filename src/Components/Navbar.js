@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light pb-0" >
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Quran
+        <Link className="navbar-brand d-flex align-items-center gap-3 px-4" to="/">
+          <img className="w-25 h-25" src="http://pngimg.com/uploads/quran/quran_PNG39.png" alt="logo" />
+          <h2>Learn - Quran</h2>
         </Link>
         <button
           className="navbar-toggler"
@@ -32,17 +33,6 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <form className="d-flex">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>

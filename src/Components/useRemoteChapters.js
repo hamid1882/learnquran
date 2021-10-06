@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import MiniNav from './MiniNav';
 
 export default function useRemoteData(url, transform = () => { }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     setLoading(true)
@@ -17,5 +19,5 @@ export default function useRemoteData(url, transform = () => { }) {
       // eslint-disable-next-line
   }, [])
 
-  return [loading, data]
+  return [loading, data, MiniNav]
 }

@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router';
+import MiniNav from './MiniNav';
+import useDisplayModes from './useDisplayModes';
 
 const Nazirath = () => {
   const [data, setData] = useState([]);
   const [loading, setloading] = useState(false);
+  const [design, handleClick, btnText] = useDisplayModes();
  
   //Getting the id's from chapters Link element
   const { id } = useParams();
@@ -21,10 +24,11 @@ const Nazirath = () => {
   }, [])
 
   return (
-    <div className="container text-center p-5 my-2">
+    <div style={design} className="container-fluid text-center my-2">
+      <MiniNav click={handleClick} text={btnText} nightMode={design} />
       {loading ? 'loading': null}
       {data.map(verse => {
-        return <div className="p-2 my-1 border-bottom fs-1" key={verse.id}>{verse.text_uthmani} <span className="p-2 fs-5 bg-secondary rounded-circle bg-opacity-50">{verse.verse_number}</span></div>
+        return <div style={design} className="p-2 my-1 border-bottom fs-1" key={verse.id}>{verse.text_uthmani} <span className="p-2 fs-5 bg-secondary rounded-circle bg-opacity-50">{verse.verse_number < 10 ? '0' + (verse.verse_number) : verse.verse_number}</span></div>
       })}
     </div>
   )
