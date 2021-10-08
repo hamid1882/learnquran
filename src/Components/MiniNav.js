@@ -4,7 +4,7 @@ import '../App.css'
 
 const MiniNav = (props) => {
   return (
-    <ul style={props.nightMode} className="nav sticky-top bg-opacity-50 align-items-center justify-content-between">
+    <ul style={props.nightMode} className="nav sticky-top bg-opacity-50 align-items-center justify-content-center gap-5">
       <li className="hoverNavItems nav-item">
         <Link
           style={props.nightMode}

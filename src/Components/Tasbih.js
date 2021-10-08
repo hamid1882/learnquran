@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom'
 import "../App.css";
-import TasbihCarousel from "./TasbihCarousel";
+// import TasbihCarousel from "./TasbihCarousel";
 
 const Tabih = () => {
   const [count, setCount] = useState(0);
@@ -25,6 +26,7 @@ const Tabih = () => {
     <div className="tasbihBg d-flex justify-content-center text-center mx-auto">
       <div className="container p-5 m-5 vh-100">
         <h1 className="text-center p-5">Tasbih</h1>
+        <Link to='/' className="m-2 p-2 fs-5 bg-gradient" style={{cursor: 'pointer', textDecoration: 'none', color: 'black'}}>Home</Link>
         {/* <TasbihCarousel /> */}
         <div
           className="tasbihDiv d-flex justify-content-center align-items-center text-center h-50 w-100 mx-auto"
@@ -33,14 +35,14 @@ const Tabih = () => {
         >
           <h1 className="tasbihInsideDiv p-5 rounded shadow">{count}</h1>
         </div>
-        <div className="d-flex gap-2 align-items-center justify-content-around p-2 my-5">
-          <button onClick={handleDecrement} className="tasbihBtn btn-success p-2 rounded">
+        <div className="d-flex gap-2 align-items-center justify-content-around p-2">
+          <button onClick={handleDecrement} className="tasbihBtn btn-success p-4 rounded">
           &#8722; Decrement
           </button>
-          <button onClick={handleReset} className="tasbihBtn btn-success p-2 rounded">
+          <button onClick={handleReset} className="tasbihBtn btn-success p-4 rounded">
             Reset &#33;
           </button>
-          <button onClick={handleIncrement} className="tasbihBtn btn-success p-2 rounded">
+          <button onClick={handleIncrement} className="tasbihBtn btn-success p-4 rounded">
            Increment &#43;
           </button>
         </div>

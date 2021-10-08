@@ -2,15 +2,17 @@ import useRemoteChapters from "./useRemoteChapters";
 import { Link } from "react-router-dom";
 import useDisplayModes from "./useDisplayModes";
 import { useState } from "react";
-import LoadingBar from 'react-top-loading-bar';
-import '../App.css'
+import LoadingBar from "react-top-loading-bar";
+import Spinner from './Spinner';
+import "../App.css";
 
 const Chapters = () => {
-  const [loading, data, MiniNav, progress, setProgress, handleLoad] = useRemoteChapters(
-    "https://api.quran.com/api/v4/chapters?language=en",
-    (data) => data.chapters
-  );
-  const [design, handleClick, btnText ] = useDisplayModes();
+  const [loading, data, MiniNav, progress, setProgress, handleLoad] =
+    useRemoteChapters(
+      "https://api.quran.com/api/v4/chapters?language=en",
+      (data) => data.chapters
+    );
+  const [design, handleClick, btnText] = useDisplayModes();
   const [search, setSearch] = useState("");
 
   const handleChange = (e) => {
@@ -21,7 +23,7 @@ const Chapters = () => {
   return (
     <>
       <LoadingBar
-        color='#f11946'
+        color="#f11946"
         height={3}
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
@@ -41,10 +43,11 @@ const Chapters = () => {
       </div>
       <div
         style={design}
-        className="container-fluid mx-auto row gap-3 justify-content-center align-items-center"
+        className="container-fluid text-center mx-auto row gap-3 justify-content-center align-items-center"
       >
-        {loading ? "loading" : null}
-        {data.filter((val) => {
+        {loading ? <Spinner /> : null}
+        {data
+          .filter((val) => {
             if (search === "") {
               return val;
             }

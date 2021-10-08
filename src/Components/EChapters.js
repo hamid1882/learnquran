@@ -3,6 +3,7 @@ import useRemoteChapters from "./useRemoteChapters";
 import { Link } from "react-router-dom";
 import useDisplayModes from "./useDisplayModes";
 import LoadingBar from "react-top-loading-bar";
+import Spinner from './Spinner';
 import '../App.css'
 
 const EChapters = () => {
@@ -41,9 +42,9 @@ const EChapters = () => {
       </div>
       <div
         style={design}
-        className="container-fluid mx-auto row gap-3 justify-content-center align-items-center"
+        className="container-fluid text-center mx-auto row gap-3 justify-content-center align-items-center"
       >
-        {loading ? "loading" : null}
+        {loading ? <Spinner /> : null}
         {data
           .filter((item) => {
             if (search === "") {
@@ -61,6 +62,7 @@ const EChapters = () => {
               <div
                 className="hoverDiv col col-md-4 col-lg-3  border border-success rounded text-center my-3 "
                 style={{ cursor: "pointer" }}
+                key={item.id}
               >
                 <Link
                   to={`/echapters/${item.id}`}

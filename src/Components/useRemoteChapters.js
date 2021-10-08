@@ -16,6 +16,7 @@ export default function useRemoteData(url, transform = () => {}) {
         setData(file);
         setLoading(false);
         setProgress(100)
+        document.title = 'Chapters'
       })
       .catch((error) => {
         throw error;

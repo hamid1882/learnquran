@@ -28,7 +28,7 @@ const Home = () => {
           />
         </div>
         <h1 className="fs-1 text-center">Read Quran</h1>
-        <div className="d-flex gap-2 p-2 my-5">
+        <div className="d-flex gap-2 p-2 my-5 justify-content-center">
           <Link
             style={{ textDecoration: "none", color: "black" }}
             to="/chapters"
