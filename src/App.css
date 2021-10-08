@@ -15,6 +15,12 @@
   border-radius: 5px;
   opacity: 0.4
 }
+
+.navActive:active {
+  background-color: red;
+  border: 1px solid black;
+}
+
 body {
   height: 100%;
 }

@@ -1,24 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import '../App.css'
 
 const MiniNav = (props) => {
+  let location = useLocation();
   return (
     <ul style={props.nightMode} className="nav sticky-top bg-opacity-50 align-items-center justify-content-center gap-5">
-      <li className="hoverNavItems nav-item">
-        <Link
+      <li className="hoverNavItems nav-item active">
+        <Link className=""
           style={props.nightMode}
-          className="nav-link active"
+          className={`navActive nav-link ${location.pathname==="/"? "active": ""}`}
           aria-current="page"
-          to="/"
+          to="/" 
         >
           Home
         </Link>
       </li>
-      <li className="hoverNavItems nav-item">
+      <li className="hoverNavItems navActive nav-item">
         <Link
           style={props.nightMode}
-          className="nav-link"
+          className={`navActive nav-link ${location.pathname==="/chapters"? "active": ""}`}
           to="/chapters"
         >
           Chapters
@@ -27,7 +28,7 @@ const MiniNav = (props) => {
       <li className="hoverNavItems nav-item">
         <Link
           style={props.nightMode}
-          className="nav-link"
+          className={`navActive nav-link ${location.pathname==="/echapters"? "active": ""}`}
           to="/echapters"
         >
           English Quran
