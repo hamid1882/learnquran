@@ -1,15 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "../App.js";
+import { Link, useLocation } from "react-router-dom";
+import "../App.css";
 
 const Navbar = () => {
   const handleTitle = () => {
     document.title = 'LearnQuran - Home'
   }
+  let location = useLocation();
+
+
   return (
-    <nav className="navbarBg navbar navbar-expand-lg navbar-light bg-light pb-0">
-      <div className="container-fluid">
-        <Link className="navbar-brand d-flex align-items-center gap-2" to="/">
+    <nav className="navbarBg navbar navbar-expand-lg navbar-light p-0">
+      <div className="container-fluid ">
+        <Link className=" navbar-brand p-0 d-flex align-items-center gap-2" to="/">
           <img
             className="w-25 h-25"
             src="http://pngimg.com/uploads/quran/quran_PNG39.png"
@@ -34,17 +37,17 @@ const Navbar = () => {
         >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/" onClick={handleTitle}>
+              <Link className={`nav-link ${location.pathname==="/"? "active": ""}`} aria-current="page" to="/" onClick={handleTitle}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/tasbih">
+              <Link className={`nav-link ${location.pathname==="/tasbih"? "active": ""}`} to="/tasbih">
                 Tasbeeh Counter
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <Link className={`nav-link ${location.pathname==="/about"? "active": ""}`} to="/about">
                 About
               </Link>
             </li>

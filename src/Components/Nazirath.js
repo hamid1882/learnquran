@@ -53,7 +53,7 @@ const Nazirath = () => {
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
       />
-      <div style={design} className="container-fluid text-center my-2">
+      <div style={design} className="container-fluid p-0 text-center">
         <MiniNav click={handleClick} text={btnText} nightMode={design} />
         {loading ? <Spinner /> : null}
         {!progress === 0 ? progress : null}

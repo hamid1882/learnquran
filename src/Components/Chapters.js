@@ -1,7 +1,7 @@
 import useRemoteChapters from "./useRemoteChapters";
 import { Link } from "react-router-dom";
 import useDisplayModes from "./useDisplayModes";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import LoadingBar from "react-top-loading-bar";
 import Spinner from './Spinner';
 import "../App.css";
@@ -15,10 +15,18 @@ const Chapters = () => {
   const [design, handleClick, btnText] = useDisplayModes();
   const [search, setSearch] = useState("");
 
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
+
   const handleChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
+
+  const filteredData = data.filter(item => item.name_simple.toLowerCase().includes(search.toLowerCase()))
 
   return (
     <>
@@ -32,6 +40,7 @@ const Chapters = () => {
       <div style={design} className="d-flex justify-content-center">
         <form style={design} className="d-flex w-50 p-2 my-2">
           <input
+            ref={inputRef}
             value={search}
             className="form-control me-2"
             type="text"
@@ -46,28 +55,18 @@ const Chapters = () => {
         className="container-fluid text-center mx-auto row gap-3 justify-content-center align-items-center"
       >
         {loading ? <Spinner /> : null}
-        {data
-          .filter((val) => {
-            if (search === "") {
-              return val;
-            }
-            if (val.name_simple.toLowerCase().includes(search.toLowerCase())) {
-              return val;
-            } else {
-              return null;
-            }
-          })
-          .map((item) => {
+        {filteredData.map((item) => {
             return (
               <div
-                className="hoverDiv col col-md-4 col-lg-3 border border-success rounded text-center my-3 "
+                className="hoverSmallDiv col col-md-4 col-lg-3 border border-success rounded text-center my-3 "
                 style={{ cursor: "pointer" }}
+                key={item.id}
               >
                 <Link
                   to={`/chapters/${item.id}`}
                   style={design}
                   className="d-flex p-2 rounded justify-content-evenly align-items-center"
-                  key={item.id}
+                  
                   onClick={handleLoad}
                 >
                   <div className="bg-secondary bg-opacity-50 p-2 rounded-circle">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef} from "react";
 import useRemoteChapters from "./useRemoteChapters";
 import { Link } from "react-router-dom";
 import useDisplayModes from "./useDisplayModes";
@@ -19,6 +19,14 @@ const EChapters = () => {
     setsearch(e.target.value);
   };
 
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [])
+
+  const filteredData = data.filter(item => item.name_simple.toLowerCase().includes(search.toLowerCase()))
+
   return (
     <>
       <LoadingBar
@@ -31,6 +39,7 @@ const EChapters = () => {
       <div style={design} className="d-flex justify-content-center">
         <form style={design} className="d-flex w-50 p-2 my-2">
           <input
+          ref={inputRef}
             value={search}
             className="form-control me-2"
             type="text"
@@ -45,22 +54,10 @@ const EChapters = () => {
         className="container-fluid text-center mx-auto row gap-3 justify-content-center align-items-center"
       >
         {loading ? <Spinner /> : null}
-        {data
-          .filter((item) => {
-            if (search === "") {
-              return item;
-            } else if (
-              item.name_simple.toLowerCase().includes(search.toLowerCase())
-            ) {
-              return item;
-            } else {
-              return null;
-            }
-          })
-          .map((item) => {
+        {filteredData.map((item) => {
             return (
               <div
-                className="hoverDiv col col-md-4 col-lg-3  border border-success rounded text-center my-3 "
+                className="hoverSmallDiv col col-md-4 col-lg-3  border border-success rounded text-center my-3 "
                 style={{ cursor: "pointer" }}
                 key={item.id}
               >

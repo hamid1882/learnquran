@@ -1,24 +1,40 @@
 * {
-  margin: 0px ;
-  padding: 0px ;
+  margin: 0px;
+  padding: 0px;
 }
 
 .navbarBg {
   background: linear-gradient(to bottom, #000066 0%, #ffccff 100%);
 }
 
+.hoverDiv {
+  transition: transform 0.7s;
+}
+
 .hoverDiv:hover {
-  box-shadow: 0px 0px 4px rgba(99, 96, 96, 0.7)
+  transform: scale(1.1);
 }
 
-.hoverNavItems:hover {
-  border-radius: 5px;
-  opacity: 0.4
+.hoverSmallDiv:hover {
+  box-shadow: 0px 0px 1px 2px teal;
+  z-index: 1;
 }
 
-.navActive:active {
+.hoverNavItems {
+  color: rgb(163, 156, 156);
+}
+
+.fonts {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.navActive.active {
   background-color: red;
   border: 1px solid black;
+}
+
+.nav-link.active {
+  color: white;
 }
 
 body {
@@ -29,30 +45,30 @@ body {
   background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
 }
 
-.tasbihDiv{
+.tasbihDiv {
   background: linear-gradient(to bottom, #33ccff 0%, #99ff99 100%);
-  transition: transform .1s;
+  transition: transform 0.1s;
 }
 
-.tasbihDiv:hover{
+.tasbihDiv:hover {
   box-shadow: 0px 0px 4px rgba(99, 96, 96, 0.7);
   /* transform: scale(1.1); */
 }
 
 .tasbihInsideDiv {
   background: linear-gradient(to bottom, #009999 0%, #ccff33 100%);
-  transition: transform .5s;
+  transition: transform 0.5s;
 }
 
 .tasbihInsideDiv:hover {
   transform: scale(1.1);
 }
 
-.tasbihBtn{
+.tasbihBtn {
   background: linear-gradient(to bottom, #009999 0%, #ccff33 100%);
   border: 1px solid black;
 }
 
 .arabicFont {
-  font-family: 'Noto Naskh Arabic', serif;
+  font-family: "Noto Naskh Arabic", serif;
 }

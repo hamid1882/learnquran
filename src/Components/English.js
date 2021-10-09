@@ -12,7 +12,6 @@ const English = () => {
   const [design, handleClick, btnText] = useDisplayModes();
   const [progress, setProgress] = useState(0);
   const [page, setPage] = useState(PAGE_NUMBER);
-  const [error, seterror] = useState('')
 
   //Getting the id's from chapters Link element
   const { id2 } = useParams();
@@ -53,11 +52,10 @@ const English = () => {
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
       />
-      <div style={design} className="container-fluid text-center my-4">
+      <div style={design} className="container-fluid text-center p-0">
         <MiniNav nightMode={design} click={handleClick} text={btnText} />
         {loading ? <Spinner /> : null}
         {!progress === 0 ? progress : null}
-        <h1>{error}</h1>
         {data.map((verse) => {
           return (
             <div

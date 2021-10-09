@@ -1,34 +1,47 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import '../App.css'
+import { Link, useLocation, useParams } from "react-router-dom";
+import "../App.css";
 
 const MiniNav = (props) => {
   let location = useLocation();
+  const { id } = useParams();
+  const { id2 } = useParams();
+
   return (
-    <ul style={props.nightMode} className="nav sticky-top bg-opacity-50 align-items-center justify-content-center gap-5">
-      <li className="hoverNavItems nav-item active">
-        <Link className=""
-          style={props.nightMode}
-          className={`navActive nav-link ${location.pathname==="/"? "active": ""}`}
+    <ul className="nav sticky-top text-light bg-dark justify-content-center gap-5 align-items-center">
+      <li className="nav-item">
+        <Link
+          style={{ textDecoration: "none"}}
+          className={`hoverNavItems nav-link ${
+            location.pathname === "/" ? "active" : ""
+          }`}
           aria-current="page"
-          to="/" 
+          to="/"
         >
           Home
         </Link>
       </li>
-      <li className="hoverNavItems navActive nav-item">
+      <li className="nav-item">
         <Link
-          style={props.nightMode}
-          className={`navActive nav-link ${location.pathname==="/chapters"? "active": ""}`}
+          className={`hoverNavItems nav-link ${
+            location.pathname === "/chapters" ||
+            location.pathname === `/chapters/${id}`
+              ? "active"
+              : ""
+          }`}
           to="/chapters"
         >
           Chapters
         </Link>
       </li>
-      <li className="hoverNavItems nav-item">
+      <li className="nav-item">
         <Link
-          style={props.nightMode}
-          className={`navActive nav-link ${location.pathname==="/echapters"? "active": ""}`}
+          className={`hoverNavItems nav-link ${
+            location.pathname === "/echapters" ||
+            location.pathname === `/echapters/${id2}`
+              ? "active"
+              : ""
+          }`}
           to="/echapters"
         >
           English Quran
@@ -42,7 +55,10 @@ const MiniNav = (props) => {
           id="flexSwitchCheckDefault"
           onClick={props.click}
         />
-        <label className="hoverNavItems form-check-label" htmlFor="flexSwitchCheckDefault">
+        <label
+          className="hoverNavItems form-check-label"
+          htmlFor="flexSwitchCheckDefault"
+        >
           {props.text}
         </label>
       </div>

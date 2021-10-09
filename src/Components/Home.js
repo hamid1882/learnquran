@@ -19,27 +19,27 @@ const Home = () => {
         onLoaderFinished={() => setProgress(100)}
       />
       {!progress === 0 ? progress : null}
-      <div className="container-fluid" style={design}>
+      <div className="container-fluid p-0" style={design}>
         <MiniNav nightMode={design} click={handleClick} text={btnText} />
-        <div className="text-center px-5 mb-5 sm-w-50 sm-h-50">
+        <div className="text-center px-5 my-5 sm-w-50 sm-h-50">
           <img
             src="https://cdn.qurancdn.com/assets/quran-logo-f5d0f128f5aa2a1949a3157d96bbd04a184e4a4ee0e05d464a3f2ae8d0bdcbdf.png"
             alt="Quran-Caligraphy"
           />
         </div>
         <h1 className="fs-1 text-center">Read Quran</h1>
-        <div className="d-flex gap-2 p-2 my-5 justify-content-center">
+        <div className="fonts container fs-5 d-flex gap-4 p-2 my-5 justify-content-center">
           <Link
             style={{ textDecoration: "none", color: "black" }}
             to="/chapters"
-            className="hoverDiv card"
+            className="col hoverDiv card border-0 shadow overflow-hidden"
           >
             <img
-              src="https://t4.ftcdn.net/jpg/03/82/95/09/360_F_382950960_H53pJTPQD2wgBRV6otb5DUcyCQP8QGhX.jpg"
-              className="img-fluid img-thumbnail"
+              src="https://i.pinimg.com/originals/95/5c/ba/955cba88c7299605f438f34d44b45860.jpg"
               alt="..."
+              className="h-75"
             />
-            <div className="card-body">
+            <div className="card-body flex align-items-center" >
               <p className="card-text">Nazirah Quran</p>
             </div>
           </Link>
@@ -47,30 +47,30 @@ const Home = () => {
             onClick={handleClick}
             style={{ textDecoration: "none", color: "black" }}
             to="/echapters"
-            className="hoverDiv card"
+            className="col hoverDiv card border-0 shadow overflow-hidden"
           >
             <img
-              src="https://t4.ftcdn.net/jpg/03/82/95/09/360_F_382950960_H53pJTPQD2wgBRV6otb5DUcyCQP8QGhX.jpg"
-              className="img-fluid img-thumbnail"
+              src="https://media.gettyimages.com/videos/islamic-concept-the-holy-al-quran-with-written-arabic-calligraphy-of-video-id1336011337?s=640x640"
               alt="..."
+              className="h-75"
             />
             <div className="card-body">
-              <p className="card-text">Quran with English Translation</p>
+              <p className="card-text">English Translation</p>
             </div>
           </Link>
           <Link
             onClick={handleClick}
             style={{ textDecoration: "none", color: "black" }}
             to="/tasbih"
-            className="hoverDiv card"
+            className="col hoverDiv card border-0 shadow overflow-hidden"
           >
             <img
-              src="https://t4.ftcdn.net/jpg/03/82/95/09/360_F_382950960_H53pJTPQD2wgBRV6otb5DUcyCQP8QGhX.jpg"
-              className="img-fluid img-thumbnail"
+              src="https://t4.ftcdn.net/jpg/02/55/89/27/360_F_255892725_PoBXNVXs0EEOEY8LKsmuNr9EpaAMIuJX.jpg"
               alt="..."
+              className="h-75"
             />
             <div className="card-body">
-              <p className="card-text">Tasbih</p>
+              <p className="card-text ">Tasbih</p>
             </div>
           </Link>
         </div>
