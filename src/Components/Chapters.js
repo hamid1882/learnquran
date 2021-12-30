@@ -32,6 +32,8 @@ const Chapters = () => {
       item.id === parseInt(search)
     ) {
       return item;
+    } else {
+      return null;
     }
   });
 

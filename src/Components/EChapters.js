@@ -32,6 +32,8 @@ const EChapters = () => {
       item.id === parseInt(search)
     ) {
       return item;
+    } else {
+      return null;
     }
   });
 
