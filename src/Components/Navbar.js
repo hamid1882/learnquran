@@ -11,17 +11,17 @@ const Navbar = () => {
 
   return (
     <nav className="navbarBg navbar navbar-expand-lg navbar-light p-0">
-      <div className="container-fluid ">
-        <Link className=" navbar-brand p-0 d-flex align-items-center gap-2" to="/">
+      <div className="container-fluid p-2 p-md-1">
+        <Link className="navbar-brand p-0 d-flex align-items-center gap-2" to="/">
           <img
-            className="w-25 h-25"
+            className="w-25 h-25 d-none d-md-block"
             src="http://pngimg.com/uploads/quran/quran_PNG39.png"
             alt="logo"
           />
           <h2>Learn - Quran</h2>
         </Link>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler shadow-none border-0"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"

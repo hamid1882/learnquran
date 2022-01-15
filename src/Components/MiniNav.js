@@ -21,9 +21,9 @@ const MiniNav = (props) => {
           Home
         </Link>
       </li>
-      <li className="nav-item">
+      <li className="nav-item d-none d-md-block">
         <Link
-          className={`hoverNavItems nav-link ${
+          className={`hoverNavItems nav-link  ${
             location.pathname === "/chapters" ||
             location.pathname === `/chapters/${id}`
               ? "active"
