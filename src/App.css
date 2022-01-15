@@ -3,6 +3,10 @@
   padding: 0px;
 }
 
+.height {
+  height: 100%;
+}
+
 .navbarBg {
   background: linear-gradient(to bottom, #000066 0%, #ffccff 100%);
 }
@@ -20,8 +24,12 @@
   z-index: 1;
 }
 
-.hoverNavItems {
+.link {
   color: rgb(163, 156, 156);
+}
+
+.hoverNavItems:hover {
+  color: rgb(238, 231, 231);
 }
 
 .fonts {

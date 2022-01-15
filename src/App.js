@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
 
   return (
-    <>
+    <div className="vh-100">
         <Router>
           <Navbar />
           <Switch>
@@ -39,7 +39,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
-    </>
+    </div>
   );
 }
 

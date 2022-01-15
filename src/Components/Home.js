@@ -19,7 +19,7 @@ const Home = () => {
         onLoaderFinished={() => setProgress(100)}
       />
       {!progress === 0 ? progress : null}
-      <div className="container-fluid p-0" style={design}>
+      <div className="container-fluid p-0 " style={design}>
         <MiniNav nightMode={design} click={handleClick} text={btnText} />
         <div className="text-center px-5 my-5">
           <img

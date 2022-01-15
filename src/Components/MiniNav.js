@@ -8,11 +8,11 @@ const MiniNav = (props) => {
   const { id2 } = useParams();
 
   return (
-    <ul className="nav sticky-top text-light bg-dark justify-content-center gap-5 align-items-center">
-      <li className="nav-item">
+    <ul className="nav sticky-top text-light bg-dark justify-content-center align-items-center">
+      <li>
         <Link
           style={{ textDecoration: "none"}}
-          className={`hoverNavItems nav-link ${
+          className={`link hoverNavItems nav-link ${
             location.pathname === "/" ? "active" : ""
           }`}
           aria-current="page"
@@ -21,9 +21,9 @@ const MiniNav = (props) => {
           Home
         </Link>
       </li>
-      <li className="nav-item d-none d-md-block">
+      <li className="d-none d-md-block">
         <Link
-          className={`hoverNavItems nav-link  ${
+          className={`link hoverNavItems nav-link  ${
             location.pathname === "/chapters" ||
             location.pathname === `/chapters/${id}`
               ? "active"
@@ -34,9 +34,9 @@ const MiniNav = (props) => {
           Chapters
         </Link>
       </li>
-      <li className="nav-item">
+      <li className="d-none d-md-block">
         <Link
-          className={`hoverNavItems nav-link ${
+          className={`link hoverNavItems nav-link ${
             location.pathname === "/echapters" ||
             location.pathname === `/echapters/${id2}`
               ? "active"
@@ -47,7 +47,7 @@ const MiniNav = (props) => {
           English Quran
         </Link>
       </li>
-      <div className="form-check form-switch px-2">
+      <li className="form-check form-switch">
         <input
           className="form-check-input"
           type="checkbox"
@@ -56,12 +56,12 @@ const MiniNav = (props) => {
           onClick={props.click}
         />
         <label
-          className="hoverNavItems form-check-label"
+          className="link hoverNavItems form-check-label"
           htmlFor="flexSwitchCheckDefault"
         >
           {props.text}
         </label>
-      </div>
+      </li>
     </ul>
   );
 };
