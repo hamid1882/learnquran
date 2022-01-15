@@ -79,4 +79,6 @@ body {
 
 .arabicFont {
   font-family: "Noto Naskh Arabic", serif;
+  font-weight: 800;
+  font-size: 20px;
 }
