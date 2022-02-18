@@ -7,16 +7,20 @@ const DisplayModes = () => {
     textDecoration: "none"
   });
   const [btnText, setbtnText] = useState('Night Mode')
+    localStorage.setItem("mode",btnText)
+  
+  let currentMode = localStorage.getItem("key");
+  console.log(currentMode)
+  
 
   const handleClick = () => {
-    if(design.color === 'black') {
+    if(design.color === 'black' || currentMode === "Night Mode") {
       setDesign({
         backgroundColor: 'black',
         color: 'white',
         textDecoration: "none", 
         paddingBottom: '10px'
       })
-      localStorage.setItem("mode",btnText)
       setbtnText(' Light Mode')
     } else {
       setDesign({
@@ -24,7 +28,6 @@ const DisplayModes = () => {
         color: 'black',
         textDecoration: "none"
       })
-      localStorage.setItem("mode",btnText)
       setbtnText('Night Mode')
     }
   }
