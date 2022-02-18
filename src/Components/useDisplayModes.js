@@ -8,13 +8,11 @@ const DisplayModes = () => {
   });
   const [btnText, setbtnText] = useState('Night Mode')
     localStorage.setItem("mode",btnText)
-  
-  let currentMode = localStorage.getItem("key");
-  console.log(currentMode)
+
   
 
   const handleClick = () => {
-    if(design.color === 'black' || currentMode === "Night Mode") {
+    if(design.color === 'black') {
       setDesign({
         backgroundColor: 'black',
         color: 'white',
