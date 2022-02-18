@@ -16,6 +16,7 @@ const DisplayModes = () => {
         textDecoration: "none", 
         paddingBottom: '10px'
       })
+      localStorage.setItem("mode",btnText)
       setbtnText(' Light Mode')
     } else {
       setDesign({
@@ -23,9 +24,12 @@ const DisplayModes = () => {
         color: 'black',
         textDecoration: "none"
       })
+      localStorage.setItem("mode",btnText)
       setbtnText('Night Mode')
     }
   }
+  
+  
 
   return [design, handleClick, btnText];
 }
