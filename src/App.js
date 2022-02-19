@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "./Components/Navbar";
 import About from "./Components/About";
 import Home from "./Components/Home";
@@ -8,13 +8,48 @@ import Nazirath from "./Components/Nazirath";
 import English from "./Components/English";
 import Tasbih from "./Components/Tasbih";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import MiniNav from "./Components/MiniNav";
+import themeContext from "./Components/Context/themeContext";
 
 function App() {
+  const nightMode = {
+    backgroundColor: "black",
+    color: "white",
+    textDecoration: "none",
+    paddingBottom: "10px",
+  };
+
+  const lightMode = {
+    backgroundColor: "white",
+    color: "black",
+    textDecoration: "none",
+  };
+
+  const [theme, settheme] = useState(lightMode);
+  const [btnText, setBtnText] = useState("Night Mode");
+
+  const handleClick = () => {
+    if (btnText === "Night Mode") {
+      settheme(nightMode);
+      setBtnText("Light Mode");
+    } else {
+      settheme(lightMode);
+      setBtnText("Night Mode");
+    }
+  };
+
+  const design = useContext(themeContext);
 
   return (
-    <div className="vh-100">
+    <themeContext.Provider value={theme}>
+      <div className="vh-100">
         <Router>
           <Navbar />
+          <MiniNav
+            design={design}
+            btnText={btnText}
+            handleClick={handleClick}
+          />
           <Switch>
             <Route exact path="/">
               <Home />
@@ -39,7 +74,8 @@ function App() {
             </Route>
           </Switch>
         </Router>
-    </div>
+      </div>
+    </themeContext.Provider>
   );
 }
 

@@ -1,19 +1,19 @@
+import React, { useContext } from "react";
 import useRemoteChapters from "./useRemoteChapters";
 import { Link } from "react-router-dom";
-import useDisplayModes from "./useDisplayModes";
 import { useState, useRef, useEffect } from "react";
 import LoadingBar from "react-top-loading-bar";
 import Spinner from "./Spinner";
+import themeContext from "./Context/themeContext";
 import "../App.css";
 
 const Chapters = () => {
-  const [loading, data, MiniNav, progress, setProgress, handleLoad] =
-    useRemoteChapters(
-      "https://api.quran.com/api/v4/chapters?language=en",
-      (data) => data.chapters
-    );
-  const [design, handleClick, btnText] = useDisplayModes();
+  const [loading, data, progress, setProgress, handleLoad] = useRemoteChapters(
+    "https://api.quran.com/api/v4/chapters?language=en",
+    (data) => data.chapters
+  );
   const [search, setSearch] = useState("");
+  const design = useContext(themeContext);
 
   const inputRef = useRef();
 
@@ -45,7 +45,6 @@ const Chapters = () => {
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
       />
-      <MiniNav nightMode={design} click={handleClick} text={btnText} />
       <div style={design} className="d-flex justify-content-center">
         <form style={design} className="d-flex w-50 p-2 my-2">
           <input

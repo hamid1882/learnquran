@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
+
 import "../App.css";
 
 const MiniNav = (props) => {
@@ -11,7 +12,7 @@ const MiniNav = (props) => {
     <ul className="nav sticky-top text-light bg-dark justify-content-center align-items-center">
       <li>
         <Link
-          style={{ textDecoration: "none"}}
+          style={{ textDecoration: "none" }}
           className={`link hoverNavItems nav-link ${
             location.pathname === "/" ? "active" : ""
           }`}
@@ -47,21 +48,11 @@ const MiniNav = (props) => {
           English Quran
         </Link>
       </li>
-      <li className="form-check form-switch">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          role="switch"
-          id="flexSwitchCheckDefault"
-          onClick={props.click}
-        />
-        <label
-          className="link hoverNavItems form-check-label"
-          htmlFor="flexSwitchCheckDefault"
-        >
-          {props.text}
-        </label>
-      </li>
+      <div className="d-flex gap-2 mt-3 align-items-center ">
+        <p onClick={props.handleClick} className="text-white">
+          {props.btnText}
+        </p>
+      </div>
     </ul>
   );
 };

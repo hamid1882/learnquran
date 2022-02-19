@@ -1,38 +1,35 @@
-import {useState} from 'react'
+import { useState } from "react";
 
 const DisplayModes = () => {
-  const [design, setDesign] = useState({
-    backgroundColor: 'white',
-    color: 'black',
-    textDecoration: "none"
-  });
-  const [btnText, setbtnText] = useState('Night Mode')
-    localStorage.setItem("mode",btnText)
+  const nightMode = {
+    backgroundColor: "black",
+    color: "white",
+    textDecoration: "none",
+    paddingBottom: "10px",
+  };
 
-  
+  const lightMode = {
+    backgroundColor: "white",
+    color: "black",
+    textDecoration: "none",
+  };
+
+  const [btnText, setbtnText] = useState("Night Mode");
+  const [design, setDesign] = useState(lightMode);
+  let currentMode = localStorage.getItem("mode");
+  localStorage.setItem("mode", currentMode);
 
   const handleClick = () => {
-    if(design.color === 'black') {
-      setDesign({
-        backgroundColor: 'black',
-        color: 'white',
-        textDecoration: "none", 
-        paddingBottom: '10px'
-      })
-      setbtnText(' Light Mode')
+    if (currentMode === "Light Mode") {
+      setDesign(lightMode);
+      setbtnText("Night Mode");
     } else {
-      setDesign({
-        backgroundColor: 'white',
-        color: 'black',
-        textDecoration: "none"
-      })
-      setbtnText('Night Mode')
+      setDesign(nightMode);
+      setbtnText("Light Mode");
     }
-  }
-  
-  
+  };
 
   return [design, handleClick, btnText];
-}
+};
 
-export default DisplayModes
+export default DisplayModes;

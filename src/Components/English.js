@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
-import MiniNav from "./MiniNav";
-import useDisplayModes from "./useDisplayModes";
 import LoadingBar from "react-top-loading-bar";
 import Spinner from "./Spinner";
+import themeContext from "./Context/themeContext";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 const PAGE_NUMBER = 1;
 
 const English = () => {
   const [data, setData] = useState([]);
   const [loading, setloading] = useState(false);
-  const [design, handleClick, btnText] = useDisplayModes();
   const [progress, setProgress] = useState(0);
   const [page, setPage] = useState(PAGE_NUMBER);
-
+  const design = useContext(themeContext);
   //Getting the id's from chapters Link element
   const { id2 } = useParams();
 
@@ -23,25 +23,15 @@ const English = () => {
       `https://api.quran.com/api/v4/verses/by_chapter/${id2}?language=en&words=true&fields=text_uthmani&page=${page}&per_page=10`
     )
       .then((res) => res.json())
-      .then(json => setData([...data, ...json.verses]))
-        setloading(false);
-        setProgress(100);
-        document.title = "Quran English Translation";
-        // eslint-disable-next-line
-      },[page]);
+      .then((json) => setData([...data, ...json.verses]));
+    setloading(false);
+    setProgress(100);
+    document.title = "Quran English Translation";
+    // eslint-disable-next-line
+  }, [page]);
 
-  const scrollToEnd = () => {
+  const fetchMoreData = () => {
     setPage(page + 1);
-  };
-
-  window.onscroll = function () {
-    //check if the page has scrolled to the bottom of the screen
-    if (
-      window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight
-    ) {
-      scrollToEnd();
-    }
   };
 
   return (
@@ -53,7 +43,6 @@ const English = () => {
         onLoaderFinished={() => setProgress(0)}
       />
       <div style={design} className="container-fluid text-center p-0">
-        <MiniNav nightMode={design} click={handleClick} text={btnText} />
         {loading ? <Spinner /> : null}
         {!progress === 0 ? progress : null}
         {data.map((verse) => {
@@ -76,6 +65,17 @@ const English = () => {
           );
         })}
       </div>
+      <InfiniteScroll
+        dataLength={data.length}
+        next={fetchMoreData}
+        hasMore={true}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Sadaqallahulazeem</b>
+          </p>
+        }
+        loader={<Spinner />}
+      ></InfiniteScroll>
     </>
   );
 };
